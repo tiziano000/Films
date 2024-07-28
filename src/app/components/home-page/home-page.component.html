@@ -1,0 +1,44 @@
+<form [formGroup]="reactiveForm" (ngSubmit)="ricercaTitolo()">
+  <div class="input-group mb-3 mx-auto" style="width: 500px;">
+    <input type="text" class="form-control" placeholder="Search movie" formControlName="inputSearch">
+    <button [disabled]="!reactiveForm.valid" class="input-group-text btn btn-secondary" type="submit"><i
+        class="bi bi-search"></i> Search</button>
+  </div>
+  <div class="text-center">
+    <small class="small text-danger" *ngIf="reactiveForm.get
+('inputSearch').invalid ">*Digita almeno due caratteri</small>
+  </div>
+</form>
+
+@if (!allTheMovies) {
+<div class="text-center mt-5 text-bg-light p-3 text-center text-capitalize">
+  <h2>"Search for your movie"</h2>
+</div>
+}
+
+@if (allTheMovies) { <div class="container">
+
+  <section class="row row-cols-1 row-cols-md-4 g-2">
+    @for (item of allTheMovies; track $index) {
+
+    <div class="col">
+
+      <div class="card mb-3">
+
+        <img [src]="item.show.image.medium" class="card-img-top" [alt]="item.show.name">
+        <div class="card-body">
+          <h5 class="card-title">{{item.show.name}}</h5>
+          <h6 class="card-title">{{item.show.genres}}</h6>
+          <p class="card-title">{{item.show.premiered}}</p>
+          <a class="btn btn-primary" [routerLink]="['details/', item.show.id]">details</a>
+        </div>
+
+      </div>
+
+    </div>
+    }
+
+  </section>
+</div>
+
+}

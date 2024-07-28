@@ -1,0 +1,14 @@
+<div class="container">
+    <button type="button" class="btn btn-success" (click)="tornaIndietro()">INDIETRO</button>
+  <div class="card m-auto bg-body-secondary" style="width: 24rem;" *ngIf="film">
+    <img [src]="film.image.original" class="card-img-top" [alt]="film.name">
+    <div class="card-body">
+      <h5 class="card-title">{{film.rating.average}}</h5>
+      <h6 class="card-title">{{film.genres}}</h6>
+      <p class="card-title">{{film.premiered}}</p>
+      <p [innerHTML]="film.summary"></p>
+    </div>
+ </div>   
+  
+
+</div>
